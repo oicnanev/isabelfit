@@ -1,0 +1,31 @@
+{
+  "name": "isabelfit",
+  "version": "1.0.0",
+  "description": "IsabelFit personal trainer website",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"No tests configured\"",
+    "start": "node server.js"
+  },
+  "keywords": ["fitness", "personal-trainer", "isabelfit"],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "autoprefixer": "^10.4.21",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "nodemailer": "^6.10.0",
+    "nodemailer-mailgun-transport": "^2.1.5",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^4.0.15"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oicnanev/isabelfit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/oicnanev/isabelfit/issues"
+  },
+  "homepage": "https://www.isabelfit.pt"
+}

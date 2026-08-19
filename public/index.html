@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IsabelFit | Personal Trainer</title>
+    <meta name="description" content="IsabelFit personal trainer em Portugal. Plano alimentar, avaliação e treino personalizado para atingir os teus objetivos." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700;800&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <script src="/js/isabelfit.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a href="#inicio" class="brand" aria-label="IsabelFit home">
+          <span class="brand-mark"><i class="fa-solid fa-dumbbell"></i></span>
+          <span>IsabelFit</span>
+        </a>
+
+        <nav class="main-nav" aria-label="Menu principal">
+          <a href="#inicio">Início</a>
+          <a href="#alimentar">Plano alimentar</a>
+          <a href="#avaliacao">Avaliação</a>
+          <a href="#planos">Planos</a>
+          <a href="#contactos">Contactos</a>
+          <a href="#contactos" class="nav-button">Agendar</a>
+        </nav>
+
+        <button class="mobile-toggle" type="button" aria-label="Abrir menu" data-toggle-menu>
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+
+      <div class="mobile-menu" id="mobile-menu">
+        <a href="#inicio">Início</a>
+        <a href="#alimentar">Plano alimentar</a>
+        <a href="#avaliacao">Avaliação</a>
+        <a href="#planos">Planos</a>
+        <a href="#contactos">Contactos</a>
+      </div>
+    </header>
+
+    <main>
+      <section id="inicio" class="hero">
+        <div class="hero-inner">
+          <div class="hero-copy">
+            <div class="kicker">Personal trainer</div>
+            <h1>
+              Personal<br />
+              Trainer
+              <span class="gold">Isabel</span>
+            </h1>
+
+            <ul class="hero-benefits">
+              <li><i class="fa-solid fa-bullseye"></i><span>Foco<strong>Resultados</strong></span></li>
+              <li><i class="fa-solid fa-chart-column"></i><span>Acompanhamento<strong>Personalizado</strong></span></li>
+              <li><i class="fa-solid fa-heart"></i><span>Motivação<strong>Constante</strong></span></li>
+              <li><i class="fa-regular fa-clock"></i><span>Disciplina<strong>Hoje</strong></span></li>
+              <li><i class="fa-solid fa-check"></i><span>Conquistas<strong>Amanhã</strong></span></li>
+            </ul>
+
+            <div class="signature">Tu consegues!</div>
+          </div>
+
+          <div class="hero-visual">
+            <img src="/images/pt_isabel.jpeg" alt="IsabelFit personal trainer" />
+            <div class="photo-badge">Personal trainer<br /><span>Isabel</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="alimentar" class="feature feature-light">
+        <div class="feature-inner">
+          <div class="feature-icon">
+            <i class="fa-solid fa-utensils"></i>
+          </div>
+
+          <div class="feature-copy">
+            <h2>Plano alimentar</h2>
+            <h3>Incluir a suplementação</h3>
+            <p>
+              Plano personalizado de acordo com os teus objetivos e estilo de vida. A alimentação é a base para transformar cada treino em resultados visíveis e duradouros.
+            </p>
+
+            <ul class="check-list">
+              <li>Plano alimentar personalizado</li>
+              <li>Cálculo de necessidades nutricionais</li>
+              <li>Sugestão de refeições equilibradas</li>
+              <li>Lista de compras</li>
+              <li>Suplementação adequada aos teus objetivos</li>
+              <li>Dicas práticas para o dia a dia</li>
+            </ul>
+
+            <div class="price-box">
+              <span>Plano alimentar + suplementação</span>
+              <strong>40€</strong>
+            </div>
+          </div>
+
+          <div class="feature-visual">
+            <img src="/images/plano_alimentar.jpeg.jpg" alt="Plano alimentar IsabelFit" />
+          </div>
+        </div>
+      </section>
+
+      <section id="avaliacao" class="feature feature-light">
+        <div class="feature-inner">
+          <div class="feature-icon">
+            <i class="fa-solid fa-clipboard-check"></i>
+          </div>
+
+          <div class="feature-copy">
+            <h2>Avaliação</h2>
+            <h3>Da massa corporal</h3>
+            <p>
+              Análise completa para conhecer o teu corpo por dentro e construir uma estratégia focada nos teus objetivos, saúde e performance.
+            </p>
+
+            <ul class="check-list">
+              <li>Composição corporal detalhada</li>
+              <li>Percentagem de massa gorda</li>
+              <li>Massa muscular</li>
+              <li>Água corporal</li>
+              <li>Idade metabólica</li>
+              <li>Metabolismo basal</li>
+              <li>Avaliação física e orientação</li>
+            </ul>
+
+            <div class="price-box">
+              <span>Avaliação</span>
+              <strong>35€</strong>
+            </div>
+          </div>
+
+          <div class="feature-visual">
+            <img src="/images/avaliacao_massa.jpeg" alt="Avaliação da massa corporal IsabelFit" />
+          </div>
+        </div>
+      </section>
+
+      <section id="planos" class="section-wrap">
+        <h2 class="section-heading">Planos</h2>
+
+        <div class="plans-grid">
+          <article class="plan-card">
+            <div class="tag">Pack 1</div>
+            <h3>4 sessões</h3>
+            <div class="sessions">Treino personalizado</div>
+
+            <ul>
+              <li>Orientação individual</li>
+              <li>Plano de treino adaptado</li>
+              <li>Suporte na execução</li>
+              <li>Motivação constante</li>
+            </ul>
+
+            <div class="price">135€</div>
+            <div class="caption">Começa hoje</div>
+          </article>
+
+          <article class="plan-card featured">
+            <div class="tag">Pack 2</div>
+            <h3>8 sessões</h3>
+            <div class="sessions">Treino personalizado</div>
+
+            <ul>
+              <li>Duração 30 minutos</li>
+              <li>Foco em resultados</li>
+              <li>Acompanhamento personalizado</li>
+              <li>Progressão supervisionada</li>
+            </ul>
+
+            <div class="price">283,36€</div>
+            <div class="caption">Investe em ti</div>
+          </article>
+
+          <article class="plan-card">
+            <div class="tag">Pack 3</div>
+            <h3>12 sessões</h3>
+            <div class="sessions">Treino personalizado</div>
+
+            <ul>
+              <li>Duração 30 minutos</li>
+              <li>Foco em resultados</li>
+              <li>Acompanhamento personalizado</li>
+              <li>Motivação constante</li>
+            </ul>
+
+            <div class="price">406,56€</div>
+            <div class="caption">Transforma o teu corpo</div>
+          </article>
+        </div>
+      </section>
+
+      <section id="contactos" class="contact">
+        <div class="contact-inner">
+          <div class="contact-card">
+            <h3>Contactos</h3>
+            <ul class="contact-list">
+              <li><i class="fa-solid fa-envelope"></i><span>isabel@isabelfit.pt</span></li>
+              <li><i class="fa-solid fa-phone"></i><span>+351 912 345 678</span></li>
+              <li><i class="fa-brands fa-instagram"></i><span>@isabelfit.pt</span></li>
+              <li><i class="fa-solid fa-globe"></i><span>www.isabelfit.pt</span></li>
+            </ul>
+          </div>
+
+          <div class="contact-card">
+            <h3>Mensagem</h3>
+            <form id="contactForm" class="contact-form">
+              <div>
+                <label for="name">Nome</label>
+                <input id="name" name="name" type="text" placeholder="O teu nome" required />
+              </div>
+
+              <div>
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" placeholder="O teu email" required />
+              </div>
+
+              <div>
+                <label for="message">Mensagem</label>
+                <textarea id="message" name="message" placeholder="Escreve a tua mensagem" required></textarea>
+              </div>
+
+              <button type="submit" class="btn-primary">Enviar mensagem</button>
+            </form>
+
+            <div id="formMessage" class="form-status" aria-live="polite"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">&copy; 2026 IsabelFit. Todos os direitos reservados.</footer>
+  </body>
+</html>
+
