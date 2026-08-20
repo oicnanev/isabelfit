@@ -10,26 +10,36 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, '../public')));
 require('dotenv').config({ path: path.join(__dirname, '../.env') });
 
-const transporter = nodemailer.createTransport({
-  host: 'smtp.elasticemail.com',
-  port: 2525,
-  secure: false,
-  auth: {
-    user: process.env.ELASTIC_EMAIL_USER,
-    pass: process.env.ELASTIC_EMAIL_API_KEY
-  },
-  tls: {
-    rejectUnauthorized: false
-  }
-});
+const smtpUser = process.env.ELASTIC_EMAIL_USER;
+const smtpPass = process.env.ELASTIC_EMAIL_API_KEY;
+const hasSmtpCredentials = Boolean(smtpUser && smtpPass);
 
-transporter.verify((error) => {
-  if (error) {
-    console.error('Erro na conexão SMTP:', error);
-  } else {
-    console.log('Conexão SMTP configurada com sucesso');
-  }
-});
+let transporter = null;
+
+if (hasSmtpCredentials) {
+  transporter = nodemailer.createTransport({
+    host: 'smtp.elasticemail.com',
+    port: 2525,
+    secure: false,
+    auth: {
+      user: smtpUser,
+      pass: smtpPass
+    },
+    tls: {
+      rejectUnauthorized: false
+    }
+  });
+
+  transporter.verify((error) => {
+    if (error) {
+      console.error('Erro na conexão SMTP:', error);
+    } else {
+      console.log('Conexão SMTP configurada com sucesso');
+    }
+  });
+} else {
+  console.warn('Credenciais SMTP faltando. Defina ELASTIC_EMAIL_USER e ELASTIC_EMAIL_API_KEY no ficheiro .env para ativar o envio de emails.');
+}
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../public/index.html'));
@@ -40,6 +50,13 @@ app.post('/contact', async (req, res) => {
 
   if (!name || !email || !message) {
     return res.status(400).json({ error: 'Todos os campos são obrigatórios' });
+  }
+
+  if (!transporter) {
+    return res.status(503).json({
+      error: 'Email não configurado.',
+      details: 'Adiciona ELASTIC_EMAIL_USER e ELASTIC_EMAIL_API_KEY ao ficheiro .env para ativar o envio de mensagens.'
+    });
   }
 
   const mailOptions = {
