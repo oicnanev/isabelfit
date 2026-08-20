@@ -22,28 +22,27 @@ document.addEventListener('DOMContentLoaded', () => {
       const formData = new FormData(form);
       const submitButton = form.querySelector('button[type="submit"]');
 
+      formData.append('access_key', 'e9d4d3f5-f4e0-46c0-a8dd-bbc452f95a1a');
+
       submitButton.disabled = true;
       submitButton.textContent = 'A enviar...';
       formMessage.textContent = '';
       formMessage.classList.remove('visible', 'success', 'error');
 
       try {
-        const response = await fetch('/contact', {
+        const response = await fetch('https://api.web3forms.com/submit', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            name: formData.get('name'),
-            email: formData.get('email'),
-            message: formData.get('message')
-          })
+          body: formData
         });
 
         const result = await response.json().catch(() => ({ message: 'Erro ao enviar mensagem' }));
 
-        formMessage.textContent = response.ok ? 'Mensagem enviada com sucesso!' : (result.error || 'Erro ao enviar mensagem');
-        formMessage.classList.add(response.ok ? 'success' : 'error', 'visible');
+        const success = response.ok && result.success !== false;
 
-        if (response.ok) {
+        formMessage.textContent = success ? 'Mensagem enviada com sucesso!' : (result.message || 'Erro ao enviar mensagem');
+        formMessage.classList.add(success ? 'success' : 'error', 'visible');
+
+        if (success) {
           form.reset();
         }
       } catch (error) {

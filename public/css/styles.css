@@ -783,6 +783,12 @@ a {
 
   .hero-visual img {
     height: 560px;
+    object-position: center top;
+  }
+
+  .feature-visual img {
+    height: 500px;
+    object-position: center top;
   }
 
   .feature-icon {

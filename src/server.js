@@ -10,17 +10,30 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, '../public')));
 require('dotenv').config({ path: path.join(__dirname, '../.env') });
 
-const smtpUser = process.env.ELASTIC_EMAIL_USER;
-const smtpPass = process.env.ELASTIC_EMAIL_API_KEY;
+const smtpHost = (process.env.SMTP_HOST || process.env.ELASTIC_EMAIL_HOST || 'smtp.elasticemail.com').trim();
+const smtpPort = Number(process.env.SMTP_PORT || process.env.ELASTIC_EMAIL_PORT || 2525);
+const smtpSecure = (process.env.SMTP_SECURE || '').toLowerCase() === 'true';
+const smtpUser = (process.env.SMTP_USER || process.env.ELASTIC_EMAIL_USER || process.env.EMAIL_USER || '').trim();
+const smtpPass = (process.env.SMTP_PASS || process.env.ELASTIC_EMAIL_API_KEY || process.env.EMAIL_PASS || '').trim();
 const hasSmtpCredentials = Boolean(smtpUser && smtpPass);
+
+console.log('SMTP status:', {
+  host: smtpHost,
+  port: smtpPort,
+  secure: smtpSecure,
+  hasUser: Boolean(smtpUser),
+  hasPass: Boolean(smtpPass),
+  userPreview: smtpUser ? `${smtpUser.slice(0, 4)}***` : 'missing',
+  apiKeyPreview: smtpPass ? `${smtpPass.slice(0, 4)}***` : 'missing'
+});
 
 let transporter = null;
 
 if (hasSmtpCredentials) {
   transporter = nodemailer.createTransport({
-    host: 'smtp.elasticemail.com',
-    port: 2525,
-    secure: false,
+    host: smtpHost,
+    port: smtpPort,
+    secure: smtpSecure,
     auth: {
       user: smtpUser,
       pass: smtpPass
