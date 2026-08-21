@@ -1217,5 +1217,11 @@ a {
   .section-heading {
     font-size: 3rem;
   }
+
+  .online .section-heading {
+    font-size: 2.4rem;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
 }
 
