@@ -833,6 +833,18 @@ a {
   color: #2b2927;
 }
 
+.podcast-episodes {
+  display: grid;
+  gap: 1.4rem;
+}
+
+.podcast-episode h3 {
+  margin: 0 0 0.6rem;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #181818;
+}
+
 .podcast-list {
   list-style: none;
   margin: 0;
@@ -932,6 +944,17 @@ a {
   padding: 0 0.4rem;
   color: #2c2c2c;
   line-height: 1.7;
+}
+
+.faq-steps {
+  margin: 0 0 1.05rem;
+  padding: 0 0.4rem 0 1.6rem;
+  color: #2c2c2c;
+  line-height: 1.7;
+}
+
+.faq-steps li {
+  margin-bottom: 0.3rem;
 }
 
 .contact {
