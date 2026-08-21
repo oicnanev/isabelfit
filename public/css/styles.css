@@ -843,6 +843,14 @@ a {
   font-size: 1.1rem;
   font-weight: 800;
   color: #181818;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.podcast-episode h3 i {
+  color: #8a5d17;
+  font-size: 1rem;
 }
 
 .podcast-list {
