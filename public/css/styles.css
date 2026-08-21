@@ -838,6 +838,9 @@ a {
   color: var(--isabel-gold);
   display: grid;
   place-items: center;
+}
+
+.podcasts-icon i {
   font-size: 0.4em;
 }
 
