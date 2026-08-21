@@ -402,6 +402,15 @@ a {
   margin: 0 auto;
 }
 
+.feature-icon-photo {
+  display: none;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 50%;
+}
+
 .feature-copy h2,
 .section-heading {
   font-family: 'Cormorant Garamond', serif;
@@ -799,6 +808,23 @@ a {
 }
 
 @media (max-width: 560px) {
+  #sobre .feature-visual {
+    display: none;
+  }
+
+  #sobre .feature-icon {
+    padding: 0;
+    overflow: hidden;
+  }
+
+  #sobre .feature-icon i {
+    display: none;
+  }
+
+  #sobre .feature-icon .feature-icon-photo {
+    display: block;
+  }
+
   .hero h1 {
     font-size: 4.2rem;
   }
