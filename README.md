@@ -34,28 +34,9 @@ O site fica disponível em http://localhost:3000
 - secções de plano alimentar, avaliação e planos
 - contacto com formulário e envio de mensagem
 - visual baseado nas imagens fornecidas da Isabel
-| Publish Directory	| (Leave blank) | 
-
-### 9. NodeMailer - Por configurar
-
-Usar o Gmail com Nodemailer
-
-- Ativar a autenticação de dois fatores (se ainda não tiver).
-- Gerar uma senha de app:
-- Aceder Google Account Security.
-- Em "Senhas de app", clicar em "Selecionar app" e escolher "Outro (Nome personalizado)".
-- Dar um nome à senha (por exemplo, "Nodemailer") e clicar em "Gerar".
-- Usar essa senha no campo pass do Nodemailer.
-
-Na máquina ou serviço em que ficar o website criar um ficheiro `.env`com os campos:
-
-- EMAIL_USER
-- EMAIL_PASS
 
 
-### TODO: formatar melhor
-
-Passo a passo para criar uma **VM sempre gratuita (e2-micro)** no Google Cloud e configurá-la para hospedar um site. Este tutorial cobre desde a criação da conta até a implantação de um site básico.
+Passo a passo para criar uma **VM sempre gratuita (e2-micro)** no Google Cloud e configurá-la para hospedar um site. 
 
 ---
 
@@ -78,7 +59,6 @@ Passo a passo para criar uma **VM sempre gratuita (e2-micro)** no Google Cloud e
    - **Sistema operacional**: Ubuntu 22.04 LTS (ou Debian).
    - **Firewall**: Marque **"Allow HTTP traffic"** e **"Allow HTTPS traffic"**.
 
-   ![Imagem da configuração da VM](https://i.imgur.com/XYZ1234.png)
 
 4. Clique em **"Create"**.
 
@@ -102,13 +82,7 @@ sudo apt update && sudo apt install nginx -y
 sudo systemctl start nginx
 sudo systemctl enable nginx
 ```
-- Teste: Acesse `http://<IP-DA-VM>` no navegador. Você deve ver a página padrão do Nginx.
-
-#### **Para Apache (se preferir)**:
-```bash
-sudo apt install apache2 -y
-sudo systemctl start apache2
-```
+- Teste: Acesse `http://<IP-DA-VM>` no navegador. Deve ver-se a página padrão do Nginx.
 
 ---
 
@@ -118,20 +92,14 @@ sudo systemctl start apache2
    - Altere o IP da VM de "Ephemeral" para **"Static"** (gratuito enquanto a VM existir).  
 
 2. **Domínio**:  
-   - Compre um domínio (ex: no [Cloudflare](https://www.cloudflare.com/pt-br/products/registrar/)) e aponte-o para o IP estático.  
+   - Comprar um domínio (ex: no [Cloudflare](https://www.cloudflare.com/pt-br/products/registrar/)) e aponta-lo para o IP estático.  
 
 3. **Firewall**:  
-   - Libere a porta 80 (HTTP) e 443 (HTTPS) em **VPC network** > **Firewall rules**.  
+   - Libertar a porta 80 (HTTP) e 443 (HTTPS) em **VPC network** > **Firewall rules**.  
 
 ---
 
-### **Passo 6: Implantar Seu Site**
-#### **Para um site estático (HTML/CSS/JS)**:
-1. Suba seus arquivos via SFTP ou Git:
-   ```bash
-   sudo rm -rf /var/www/html/*
-   sudo cp -r ~/seus-arquivos/* /var/www/html/
-   ```
+### **Passo 6: Implantar o Site**
 
 #### **Para um site dinâmico (Node.js/PHP)**:
 - **Node.js**: Use `pm2` para gerenciar o processo:
@@ -141,11 +109,6 @@ sudo systemctl start apache2
   pm2 start app.js
   pm2 startup
   ```
-- **PHP + MySQL**: Instale o LAMP:
-  ```bash
-  sudo apt install php mysql-server php-mysql
-  ```
-
 ---
 
 ### **Passo 7: Monitorar Custos (Evitar Cobranças)**
@@ -157,23 +120,12 @@ sudo systemctl start apache2
 
 ---
 
-### **Alternativa para Sites Estáticos: Firebase Hosting (Gratuito)**
-Se seu site for estático (HTML, React, Vue), use o **Firebase Hosting** (mais simples e com CDN):
-```bash
-npm install -g firebase-tools
-firebase init hosting
-firebase deploy
-```
-- **Recursos**: 10GB de armazenamento e 1GB/dia de tráfego gratuitos.
-
----
-
 ### **Dicas para Otimizar Recursos**
-- **Reduza o uso de CPU/RAM**: Otimize seu site para evitar esgotar os 1GB de RAM.  
-- **Use Cloud CDN**: Se o tráfego aumentar, ative o Cloud CDN (custo adicional).  
+- **Reduzir o uso de CPU/RAM**: Otimizar o site para evitar esgotar os 1GB de RAM.  
+- **Usar Cloud CDN**: Se o tráfego aumentar, ativar o Cloud CDN (custo adicional).  
 
 
-Para associar o seu domínio ao IP público da sua VM (**34.133.75.90**), siga estes passos:
+Para associar o seu domínio ao IP público da sua VM (**34.133.75.90**),:
 
 ---
 
@@ -181,8 +133,8 @@ Para associar o seu domínio ao IP público da sua VM (**34.133.75.90**), siga e
 Você precisa apontar o domínio para o IP da VM via **registro DNS**. O método depende de onde seu domínio está registrado (ex: Cloudflare, GoDaddy, Google Domains).  
 
 #### **Opção 1: Registro A (recomendado para IPs estáticos)**
-- Acesse o painel do seu **registrador de domínio** (ex: Cloudflare, Namecheap).  
-- Adicione um registro **A** com:  
+- Aceder ao painel do seu **registrador de domínio** (ex: Cloudflare, Namecheap).  
+- Adicionar um registro **A** com:  
   - **Host**: `@` (para o domínio raiz, ex: `seudominio.com`) ou `www` (para `www.seudominio.com`).  
   - **Value/IP**: `34.133.75.90` (IP da sua VM).  
   - **TTL**: `3600` (padrão).  
@@ -196,8 +148,8 @@ Você precisa apontar o domínio para o IP da VM via **registro DNS**. O método
 
 ### **Passo 2: Verifique se o IP é estático**
 No Google Cloud:  
-1. Acesse **VPC network** > **External IP addresses**.  
-2. Se o IP `34.133.75.90` estiver como **"Ephemeral"**, mude para **"Static"** (gratuito enquanto a VM existir).  
+1. Aceder a **VPC network** > **External IP addresses**.  
+2. Se o IP `34.133.75.90` estiver como **"Ephemeral"**, mudar para **"Static"** (gratuito enquanto a VM existir).  
    - Isso evita que o IP mude após reiniciar a VM.  
 
 ---
@@ -247,9 +199,8 @@ Siga as instruções para validar o domínio.
 - As alterações DNS podem levar **até 48 horas** para propagar globalmente.  
 - Verifique com:  
   ```bash
-  ping seudominio.com  # Deve retornar 34.133.75.90
-  ```
-  Ou use ferramentas como [DNS Checker](https://dnschecker.org/).  
+  ping seudominio.com  # Deve retornar o IP da VM
+  ``` 
 
 ---
 
@@ -268,75 +219,6 @@ No Google Cloud:
 
 ---
 
-Ótima observação! Sim, é **mais organizado e seguro** criar um arquivo dedicado para o domínio (`marypets.pt`) no Nginx, redirecionar HTTP (80) → HTTPS (443) e depois encaminhar para a sua aplicação Node.js na porta 3000. Siga este passo a passo:
-
----
-
-### **Passo 1: Crie um arquivo de configuração dedicado no Nginx**
-1. Acesse a VM via SSH e crie um novo arquivo para o domínio:
-   ```bash
-   sudo nano /etc/nginx/sites-available/marypets.pt
-   ```
-
-2. Cole o seguinte conteúdo (ajuste conforme necessário):
-   ```nginx
-   # Redirecionar HTTP (80) → HTTPS (443)
-   server {
-       listen 80;
-       server_name marypets.pt www.marypets.pt;
-       return 301 https://$host$request_uri;
-   }
-
-   # Configuração HTTPS (443) → Proxy para Node.js (3000)
-   server {
-       listen 443 ssl;
-       server_name marypets.pt www.marypets.pt;
-
-       # Certificado SSL (gerado pelo Certbot)
-       ssl_certificate /etc/letsencrypt/live/marypets.pt/fullchain.pem;
-       ssl_certificate_key /etc/letsencrypt/live/marypets.pt/privkey.pem;
-
-       # Configurações de segurança SSL
-       include /etc/letsencrypt/options-ssl-nginx.conf;
-       ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
-
-       # Proxy reverso para a aplicação Node.js (porta 3000)
-       location / {
-           proxy_pass http://localhost:3000;
-           proxy_http_version 1.1;
-           proxy_set_header Upgrade $http_upgrade;
-           proxy_set_header Connection 'upgrade';
-           proxy_set_header Host $host;
-           proxy_set_header X-Real-IP $remote_addr;
-           proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-           proxy_cache_bypass $http_upgrade;
-       }
-   }
-   ```
-
----
-
-### **Passo 2: Habilite o arquivo de configuração**
-1. Crie um link simbólico para ativar o site:
-   ```bash
-   sudo ln -s /etc/nginx/sites-available/marypets.pt /etc/nginx/sites-enabled/
-   ```
-
-2. Remova o arquivo `default` (se existir) para evitar conflitos:
-   ```bash
-   sudo rm /etc/nginx/sites-enabled/default
-   ```
-
-3. Teste a configuração do Nginx:
-   ```bash
-   sudo nginx -t
-   ```
-   - Se aparecer `syntax is ok`, reinicie o Nginx:
-     ```bash
-     sudo systemctl restart nginx
-     ```
-
----
 
 ### **Passo 3: Obtenha o certificado SSL (HTTPS)**
 Execute o Certbot para gerar certificados gratuitos (Let's Encrypt):
@@ -366,40 +248,6 @@ sudo certbot --nginx -d marypets.pt -d www.marypets.pt
 
 ---
 
-### **Passo 5: Ajuste o firewall (Google Cloud)**
-1. Acesse o [Console do GCP](https://console.cloud.google.com/) > **VPC network** > **Firewall rules**.  
-2. Crie regras para permitir tráfego nas portas:
-   - **80/tcp** (HTTP)  
-   - **443/tcp** (HTTPS)  
-
----
-
-### **Passo 6: Verifique a propagação do DNS**
-Use ferramentas como:
-```bash
-dig marypets.pt +short  # Deve retornar 34.133.75.90
-```
-Ou acesse:
-- [DNS Checker](https://dnschecker.org/)  
-- [SSL Labs Test](https://www.ssllabs.com/ssltest/) (para validar HTTPS).  
-
----
-
-### **Resolução de Problemas Comuns**
-- **Erro 502 Bad Gateway**:  
-  - Verifique se a aplicação Node.js está rodando (`pm2 list`).  
-  - Confira os logs do Nginx:
-    ```bash
-    sudo tail -f /var/log/nginx/error.log
-    ```
-
-- **HTTPS não funciona**:  
-  - Renove o certificado SSL:
-    ```bash
-    sudo certbot renew --dry-run
-    ```
-
----
 
 ### **Resumo Final**
 1. **Arquivo dedicado no Nginx**: Melhor organização e segurança.  
@@ -407,7 +255,7 @@ Ou acesse:
 3. **Proxy para Node.js**: Encaminha tráfego para a porta 3000.  
 4. **SSL com Certbot**: HTTPS gratuito e automático.  
 
-Para verificar se o Node.js está a correr na porta **3000** e garantir que ele continue em execução mesmo após desligar a sessão SSH, siga estes passos:
+Para verificar se o Node.js está a correr na porta **3000** e garantir que continua em execução mesmo após desligar a sessão SSH:
 
 ---
 
@@ -440,7 +288,7 @@ nohup npm start > /dev/null 2>&1 &
 - `> /dev/null 2>&1` redireciona logs para evitar arquivos `nohup.out`.
 
 #### **Opção 2: Usar `pm2` (recomendado para produção)**
-Instale o [PM2](https://pm2.keymetrics.io/) (gerenciador de processos para Node.js):
+Instalar o [PM2](https://pm2.keymetrics.io/) (gerenciador de processos para Node.js):
 ```bash
 sudo npm install -g pm2
 ```
@@ -516,24 +364,6 @@ sudo systemctl restart nginx
 - **PM2 é a melhor opção** para produção (monitoramento, reinício automático, logs organizados).  
 - Se a aplicação crasha frequentemente, verifique erros no código (ex: `try/catch` faltando).  
 
-
-🔥 Solução para envio de mensagens através do website: Elastic Email (Grátis)
-Criar conta em elasticemail.com
-
-Configure no seu código:
-
-```javascript
-const transporter = nodemailer.createTransport({
-  host: 'smtp.elasticemail.com',
-  port: 2525,
-  auth: {
-    user: 'seu_email@dominio.com',
-    pass: 'sua_senha_api' // Encontrada em Settings > API
-  }
-});
-```
-
-👉 Permite 100 emails/dia gratuitamente
 
 ### Conclusão
 
