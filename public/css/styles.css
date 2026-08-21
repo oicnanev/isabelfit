@@ -831,8 +831,8 @@ a {
 
 .podcasts-icon {
   flex-shrink: 0;
-  width: 0.72em;
-  height: 0.72em;
+  width: 1.44em;
+  height: 1.44em;
   border: 2px solid rgba(216, 178, 106, 0.9);
   border-radius: 50%;
   color: var(--isabel-gold);
@@ -841,7 +841,7 @@ a {
 }
 
 .podcasts-icon i {
-  font-size: 0.4em;
+  font-size: 0.8em;
 }
 
 .podcasts-intro {
