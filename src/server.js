@@ -37,9 +37,6 @@ if (hasSmtpCredentials) {
     auth: {
       user: smtpUser,
       pass: smtpPass
-    },
-    tls: {
-      rejectUnauthorized: false
     }
   });
 
@@ -58,6 +55,13 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../public/index.html'));
 });
 
+const escapeHtml = (value) => String(value)
+  .replace(/&/g, '&amp;')
+  .replace(/</g, '&lt;')
+  .replace(/>/g, '&gt;')
+  .replace(/"/g, '&quot;')
+  .replace(/'/g, '&#39;');
+
 app.post('/contact', async (req, res) => {
   const { name, email, message } = req.body;
 
@@ -72,14 +76,19 @@ app.post('/contact', async (req, res) => {
     });
   }
 
+  const safeName = escapeHtml(name);
+  const safeEmail = escapeHtml(email);
+  const safeMessage = escapeHtml(message).replace(/\r?\n/g, '<br />');
+
   const mailOptions = {
     from: '"IsabelFit" <isabel@isabelfit.pt>',
-    to: 'isabel@isabelfit.pt',
-    subject: `Novo contacto - ${name}`,
+    to: 'isabelfit.pt@gmail.com',
+    replyTo: email,
+    subject: `Novo contacto - ${String(name).replace(/[\r\n]+/g, ' ')}`,
     html: `
       <h3>Novo contacto do site</h3>
-      <p><strong>De:</strong> ${name} (${email})</p>
-      <p>${message}</p>
+      <p><strong>De:</strong> ${safeName} (${safeEmail})</p>
+      <p>${safeMessage}</p>
     `,
     text: `Mensagem de ${name} (${email}): ${message}`
   };

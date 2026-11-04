@@ -26,7 +26,7 @@ npm install
 npm start
 ```
 
-O site fica disponível em http://localhost:3000
+O site fica disponível em http://localhost:3001 (ou na porta definida em `PORT`)
 
 ## Conteúdo principal
 

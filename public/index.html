@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700;800&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
     <link rel="stylesheet" href="/css/styles.css" />
     <script src="/js/isabelfit.js" defer></script>
   </head>
@@ -35,7 +35,7 @@
           <a href="#contactos" class="nav-button">Agendar</a>
         </nav>
 
-        <button class="mobile-toggle" type="button" aria-label="Abrir menu" data-toggle-menu>
+        <button class="mobile-toggle" type="button" aria-label="Abrir menu" aria-controls="mobile-menu" aria-expanded="false" data-toggle-menu>
           <i class="fa-solid fa-bars"></i>
         </button>
       </div>
@@ -76,7 +76,7 @@
             <div class="signature">Tu consegues!</div>-->
             <p class="hero-tagline">A tua melhor versão<br />começa aqui</p>
 
-            <a href="#contactos" class="hero-more-btn">Sabe mais -&gt;</a>
+            <a href="#contactos" class="hero-more-btn">Sabe mais &rarr;</a>
           </div>
 
           <div class="hero-visual">
@@ -314,7 +314,7 @@
         <h2 class="section-heading">Planos Mensais</h2>
 
         <div class="plans-copy">
-          <p>Acompanhamento personalisado com compromisso mínimo.</p>
+          <p>Acompanhamento personalizado com compromisso mínimo.</p>
         </div>
 
         <div class="plans-grid">
@@ -332,7 +332,7 @@
             </ul>
 
             <div class="price">270€ / mês</div>
-            <div class="caption">Vinculo mínimo de 3 meses</div>
+            <div class="caption">Vínculo mínimo de 3 meses</div>
           </article>
 
           <article class="plan-card">
@@ -349,7 +349,7 @@
             </ul>
 
             <div class="price">390€ / mês</div>
-            <div class="caption">Vinculo mínimo de 3 meses</div>
+            <div class="caption">Vínculo mínimo de 3 meses</div>
           </article>
         </div>
       </section>
@@ -387,18 +387,14 @@
                   <li><a href="https://www.instagram.com/reel/DaaogN6Iptv/?igsi=M3hoaDdqeDhpOGR6" target="_blank" rel="noreferrer">Parte 5</a></li>
                 </ul>
               </div>
+
+              <div class="podcast-episode">
+                <h3><i class="fa-solid fa-microphone"></i>Episódio 3 - Porque você treina mas não vê resultados</h3>
+                <ul class="podcast-list">
+                  <li><a href="https://www.instagram.com/reel/DeCDUCiirrm/?stkn=MXB1ODR0NWRtc3Ntag==" target="_blank" rel="noreferrer">Introdução</a></li>
+                </ul>
+              </div>
             </div>
-            <br />
-            <div class="podcast-episode">
-              <h3><i class="fa-solid fa-microphone"></i>Episódio 3 - Porque você treina mas não vê resultados</h3>
-              <!-- <p class="podcasts-note"> Brevemente, a partir de Setembro.</p> -->
-               <ul class="podcast-list">
-                 <li><a href="https://www.instagram.com/reel/DeCDUCiirrm/?stkn=MXB1ODR0NWRtc3Ntag==" target="_blank" rel="noreferrer">Introdução</a></li>
-                 <!-- <li><a href="https://www.instagram.com/reel/DaYyZk5oP7E/?igsi=MWt5MjJxc28xczNyNA==" target="_blank" rel="noreferrer">Parte 2</a></li> -->
-                 <!-- <li><a href="https://www.instagram.com/reel/DaZzAk5oP7E/?igsi=MWt5MjJxc28xczNyNA==" target="_blank" rel="noreferrer">Parte 3</a></li> -->
-               </ul>
-            </div>
-            
           </div>
         </div>
       </section>
@@ -481,7 +477,7 @@
           <div class="contact-card">
             <h3>Contactos</h3>
             <ul class="contact-list">
-              <li><i class="fa-solid fa-envelope"></i><a href="mailto:lopez007.isabel@gmail.com">lopez007.isabel@gmail.com</a></li>
+              <li><i class="fa-solid fa-envelope"></i><a href="mailto:isabelfit.pt@gmail.com">isabelfit.pt@gmail.com</a></li>
               <li><i class="fa-brands fa-instagram"></i><a href="https://www.instagram.com/personaltrainer_isabelopes" target="_blank" rel="noreferrer">@personaltrainer_isabelopes</a></li>
               <li><i class="fa-brands fa-tiktok"></i><a href="https://www.tiktok.com/@personaltrainerisalopes" target="_blank" rel="noreferrer">@personaltrainerisalopes</a></li>
               <li><i class="fa-brands fa-whatsapp"></i><a href="https://wa.me/351913356345" target="_blank" rel="noreferrer">WhatsApp</a></li>
@@ -491,14 +487,15 @@
           <div class="contact-card">
             <h3>Mensagem</h3>
             <form id="contactForm" class="contact-form">
+              <input type="checkbox" name="botcheck" class="hidden-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
               <div>
                 <label for="name">Nome</label>
-                <input id="name" name="name" type="text" placeholder="O teu nome" required />
+                <input id="name" name="name" type="text" placeholder="O teu nome" autocomplete="name" required />
               </div>
 
               <div>
                 <label for="email">Email</label>
-                <input id="email" name="email" type="email" placeholder="O teu email" required />
+                <input id="email" name="email" type="email" placeholder="O teu email" autocomplete="email" required />
               </div>
 
               <div>
